@@ -82,7 +82,39 @@ local PABankingMenuDefaults = {
                 Known = PAC.MOVE.IGNORE,
                 Unknown = PAC.MOVE.IGNORE,
             },
-            [ITEMTYPE_RECIPE] = {
+            [SPECIALIZED_ITEMTYPE_RECIPE_ALCHEMY_FORMULA_FURNISHING] = { 
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+            [SPECIALIZED_ITEMTYPE_RECIPE_BLACKSMITHING_DIAGRAM_FURNISHING] = { 
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+            [SPECIALIZED_ITEMTYPE_RECIPE_CLOTHIER_PATTERN_FURNISHING] = { 
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+            [SPECIALIZED_ITEMTYPE_RECIPE_ENCHANTING_SCHEMATIC_FURNISHING] = { 
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+            [SPECIALIZED_ITEMTYPE_RECIPE_JEWELRYCRAFTING_SKETCH_FURNISHING] = { 
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+            [SPECIALIZED_ITEMTYPE_RECIPE_PROVISIONING_DESIGN_FURNISHING] = { 
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+            [SPECIALIZED_ITEMTYPE_RECIPE_WOODWORKING_BLUEPRINT_FURNISHING] = { 
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+			[SPECIALIZED_ITEMTYPE_RECIPE_PROVISIONING_STANDARD_DRINK] = {
+                Known = PAC.MOVE.IGNORE,
+                Unknown = PAC.MOVE.IGNORE,
+            },
+			[SPECIALIZED_ITEMTYPE_RECIPE_PROVISIONING_STANDARD_FOOD] = {
                 Known = PAC.MOVE.IGNORE,
                 Unknown = PAC.MOVE.IGNORE,
             },
@@ -90,15 +122,15 @@ local PABankingMenuDefaults = {
                  Known = PAC.MOVE.IGNORE,
                  Unknown = PAC.MOVE.IGNORE,
              },
-             [SPECIALIZED_ITEMTYPE_CRAFTED_ABILITY_SCRIPT_PRIMARY] = {
+            [SPECIALIZED_ITEMTYPE_CRAFTED_ABILITY_SCRIPT_PRIMARY] = {
                  Known = PAC.MOVE.IGNORE,
                  Unknown = PAC.MOVE.IGNORE,
              },
-             [SPECIALIZED_ITEMTYPE_CRAFTED_ABILITY_SCRIPT_SECONDARY] = {
+            [SPECIALIZED_ITEMTYPE_CRAFTED_ABILITY_SCRIPT_SECONDARY] = {
                  Known = PAC.MOVE.IGNORE,
                  Unknown = PAC.MOVE.IGNORE,
              },
-             [SPECIALIZED_ITEMTYPE_CRAFTED_ABILITY_SCRIPT_TERTIARY] = {
+            [SPECIALIZED_ITEMTYPE_CRAFTED_ABILITY_SCRIPT_TERTIARY] = {
                  Known = PAC.MOVE.IGNORE,
                  Unknown = PAC.MOVE.IGNORE,
              },

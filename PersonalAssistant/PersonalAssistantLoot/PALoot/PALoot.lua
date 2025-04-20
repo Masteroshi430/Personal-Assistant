@@ -418,7 +418,7 @@ local function OnInventorySingleSlotUpdate(eventCode, bagId, slotIndex, isNewIte
                         -- Recipe is already known;
                         PAL.debugln("known recipe looted: %s", itemLink)
 						if PALootSavedVars.LootEvents.LootStyles.autoMarkAsJunkRecipes then
-						     tryToMarkAsJunk(bagId, slotIndex) -- hereherehere
+						     tryToMarkAsJunk(bagId, slotIndex) 
 						end
                     end
                 end

@@ -1083,27 +1083,27 @@ end
 -- -----------------------------------------------------------------------------------------------------------------
 
 local function _createPABAdvancedRecipeSubmenuTable()
-    for _, itemType in pairs(PAC.BANKING_ADVANCED.LEARNABLE.RECIPE) do
+    for _, specializedItemType in pairs(PAC.BANKING_ADVANCED.LEARNABLE.RECIPE) do
         PABAdvancedRecipeSubmenuTable:insert({
             type = "dropdown",
-            name = GetString("SI_PA_MENU_BANKING_ADVANCED_KNOWN_ITEMTYPE", itemType),
+            name = GetString("SI_PA_MENU_BANKING_ADVANCED_KNOWN_ITEMTYPE", specializedItemType),
             choices = PABMenuChoices.itemMoveMode,
             choicesValues = PABMenuChoicesValues.itemMoveMode,
-            getFunc = function() return PABMenuFunctions.getAdvancedLearnableItemTypeMoveSetting(itemType, true) end,
-            setFunc = function(value) PABMenuFunctions.setAdvancedLearnableItemTypeMoveSetting(itemType, value, true) end,
+            getFunc = function() return PABMenuFunctions.getAdvancedLearnableItemTypeMoveSetting(specializedItemType, true) end,
+            setFunc = function(value) PABMenuFunctions.setAdvancedLearnableItemTypeMoveSetting(specializedItemType, value, true) end,
             disabled = PABMenuFunctions.isAdvancedItemsDisabled,
-            default = PABMenuDefaults.Advanced.LearnableItemTypes[itemType].Known,
+            default = PABMenuDefaults.Advanced.LearnableItemTypes[specializedItemType].Known,
         })
 
         PABAdvancedRecipeSubmenuTable:insert({
             type = "dropdown",
-            name = GetString("SI_PA_MENU_BANKING_ADVANCED_UNKNOWN_ITEMTYPE", itemType),
+            name = GetString("SI_PA_MENU_BANKING_ADVANCED_UNKNOWN_ITEMTYPE", specializedItemType),
             choices = PABMenuChoices.itemMoveMode,
             choicesValues = PABMenuChoicesValues.itemMoveMode,
-            getFunc = function() return PABMenuFunctions.getAdvancedLearnableItemTypeMoveSetting(itemType, false) end,
-            setFunc = function(value) PABMenuFunctions.setAdvancedLearnableItemTypeMoveSetting(itemType, value, false) end,
+            getFunc = function() return PABMenuFunctions.getAdvancedLearnableItemTypeMoveSetting(specializedItemType, false) end,
+            setFunc = function(value) PABMenuFunctions.setAdvancedLearnableItemTypeMoveSetting(specializedItemType, value, false) end,
             disabled = PABMenuFunctions.isAdvancedItemsDisabled,
-            default = PABMenuDefaults.Advanced.LearnableItemTypes[itemType].Unknown,
+            default = PABMenuDefaults.Advanced.LearnableItemTypes[specializedItemType].Unknown,
         })
     end
 end
@@ -1139,7 +1139,7 @@ end
 -- -----------------------------------------------------------------------------------------------------------------
 
 local function _createPABAdvancedMasterWritsSubmenuTable()
-   for _, itemId in pairs(PAC.BANKING_ADVANCED.UNKNOWN_WRITS) do -- hereherehere
+   for _, itemId in pairs(PAC.BANKING_ADVANCED.UNKNOWN_WRITS) do 
         local itemLink = table.concat({"|H1:item:", itemId, ":1:1:0:0:0:0:0:0:0:0:0:0:0:0:36:0:0:0:0:0|h|h"})
         PABAdvancedMasterWritsSubmenuTable:insert({
             type = "dropdown",

@@ -327,7 +327,7 @@ local function getCombinedItemTypeSpecializedComparator(combinedLists, excludeJu
                 if isValueInTable(PAC.BANKING_ADVANCED.SPECIALIZED.SURVEY_REPORTS[itemFilterType], itemId) then return true end
             end
         end
-        if specializedItemType == SPECIALIZED_ITEMTYPE_CONTAINER then -- hereherehere
+        if specializedItemType == SPECIALIZED_ITEMTYPE_CONTAINER then 
             for _, listItemId in pairs(combinedLists.unknownWrits) do
                 if itemId == listItemId then return true end
             end
@@ -344,7 +344,7 @@ local function getCombinedItemTypeSpecializedComparator(combinedLists, excludeJu
                 if expectedCraftingType == craftingType then return true end
             end
         end
-        if specializedItemType == SPECIALIZED_ITEMTYPE_COLLECTIBLE_STYLE_PAGE then -- hereherehere
+        if specializedItemType == SPECIALIZED_ITEMTYPE_COLLECTIBLE_STYLE_PAGE then 
             for _, listSpecializedItemType in pairs(combinedLists.knownStylePages) do
                 if listSpecializedItemType == itemData.specializedItemType then 
 				   if PA.HelperFunctions.getItemLinkLearnableStatus(itemData.itemLink) == PAC.LEARNABLE.KNOWN then
