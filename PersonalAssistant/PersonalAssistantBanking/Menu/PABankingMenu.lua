@@ -1139,7 +1139,20 @@ end
 -- -----------------------------------------------------------------------------------------------------------------
 
 local function _createPABAdvancedMasterWritsSubmenuTable()
-    for _, craftingType in pairs(PAC.BANKING_ADVANCED.MASTER_WRITS) do
+   for _, itemId in pairs(PAC.BANKING_ADVANCED.UNKNOWN_WRITS) do -- hereherehere
+        local itemLink = table.concat({"|H1:item:", itemId, ":1:1:0:0:0:0:0:0:0:0:0:0:0:0:36:0:0:0:0:0|h|h"})
+        PABAdvancedMasterWritsSubmenuTable:insert({
+            type = "dropdown",
+            name = itemLink, 
+            choices = PABMenuChoices.itemMoveMode,
+            choicesValues = PABMenuChoicesValues.itemMoveMode,
+            getFunc = function() return PABMenuFunctions.getAdvancedUnknownWritsMoveSetting(itemId) end,
+            setFunc = function(value) PABMenuFunctions.setAdvancedUnknownWritsMoveSetting(itemId, value) end,
+            disabled = PABMenuFunctions.isAdvancedItemsDisabled,
+            default = PABMenuDefaults.Advanced.UnknownWrits[itemId],
+        })
+   end
+   for _, craftingType in pairs(PAC.BANKING_ADVANCED.MASTER_WRITS) do
         PABAdvancedMasterWritsSubmenuTable:insert({
             type = "dropdown",
             name = GetString("SI_PA_MASTERWRIT_CRAFTINGTYPE", craftingType),

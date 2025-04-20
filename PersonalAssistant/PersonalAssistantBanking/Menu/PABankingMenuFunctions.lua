@@ -182,6 +182,20 @@ local function setPABankingAdvancedLearnableItemTypeMoveSetting(itemType, value,
 end
 
 --------------------------------------------------------------------------
+-- PABanking   Advanced.UnknownWrits      moveMode
+---------------------------------
+local function getPABankingAdvancedUnknownWritsMoveSetting(itemId)
+    if isNoProfileSelected() then return end
+    return PAB.SavedVars.Advanced.UnknownWrits[itemId]
+end
+
+local function setPABankingAdvancedUnknownWritsMoveSetting(itemId, value)
+    if isNoProfileSelected() then return end
+    PAB.SavedVars.Advanced.UnknownWrits[itemId] = value
+end
+
+
+--------------------------------------------------------------------------
 -- PABanking   Advanced.MasterWritCraftingTypes      moveMode
 ---------------------------------
 local function getPABankingAdvancedMasterWritCraftingTypeMoveSetting(craftingType)
@@ -297,9 +311,11 @@ end
 --------------------------------------------------------------------------
 -- PABanking   Advanced.MasterWritCraftingTypes         moveMode
 ---------------------------------
-local function isAdvancedMasterWritCraftingTypesDisabledOrAllMasterWritCraftingTypesMoveModeIgnore(craftingTypeList)
+local function isAdvancedMasterWritCraftingTypesDisabledOrAllMasterWritCraftingTypesMoveModeIgnore(craftingTypeList, UnknownWritsList)
     if isDisabled({"Advanced", "advancedItemsEnabled"}) then return true end
-
+    for _, itemId in ipairs(UnknownWritsList) do
+        if PAB.SavedVars.Advanced.UnknownWrits[itemId] ~= PAC.OPERATOR.NONE then return false end
+    end
     for _, craftingType in ipairs(craftingTypeList) do
         if PAB.SavedVars.Advanced.MasterWritCraftingTypes[craftingType] ~= PAC.OPERATOR.NONE then return false end
     end
@@ -396,6 +412,9 @@ local function setPABankingAdvancedItemTypeMoveAllSettings(value)
     for itemType, _ in pairs(PAB.SavedVars.Advanced.LearnableItemTypes) do
         PAB.SavedVars.Advanced.LearnableItemTypes[itemType].Known = value
         PAB.SavedVars.Advanced.LearnableItemTypes[itemType].Unknown = value
+    end
+    for itemId, _ in pairs(PAB.SavedVars.Advanced.UnknownWrits) do
+        PAB.SavedVars.Advanced.UnknownWrits[itemId] = value
     end
     for craftingType, _ in pairs(PAB.SavedVars.Advanced.MasterWritCraftingTypes) do
         PAB.SavedVars.Advanced.MasterWritCraftingTypes[craftingType] = value
@@ -656,6 +675,9 @@ local PABankingMenuFunctions = {
 	getPABankingAdvancedStylePageMoveSetting = getPABankingAdvancedStylePageMoveSetting;
 	setPABankingAdvancedStylePageMoveSetting = setPABankingAdvancedStylePageMoveSetting,
 
+    getAdvancedUnknownWritsMoveSetting = getPABankingAdvancedUnknownWritsMoveSetting,
+    setAdvancedUnknownWritsMoveSetting = setPABankingAdvancedUnknownWritsMoveSetting,
+
     getAdvancedMasterWritCraftingTypeMoveSetting = getPABankingAdvancedMasterWritCraftingTypeMoveSetting,
     setAdvancedMasterWritCraftingTypeMoveSetting = setPABankingAdvancedMasterWritCraftingTypeMoveSetting,
 
@@ -679,7 +701,7 @@ local PABankingMenuFunctions = {
 
     isMotifTransactionMenuDisabled = function() return isAdvancedLearnableItemsDisabledOrAllLearnableItemTypesMoveModeIgnore(PAC.BANKING_ADVANCED.LEARNABLE.MOTIF) end,
     isRecipeTransactionMenuDisabled = function() return isAdvancedLearnableItemsDisabledOrAllLearnableItemTypesMoveModeIgnore(PAC.BANKING_ADVANCED.LEARNABLE.RECIPE) end,
-    isMasterWritsTransactionMenuDisabled = function() return isAdvancedMasterWritCraftingTypesDisabledOrAllMasterWritCraftingTypesMoveModeIgnore(PAC.BANKING_ADVANCED.MASTER_WRITS) end,
+    isMasterWritsTransactionMenuDisabled = function() return isAdvancedMasterWritCraftingTypesDisabledOrAllMasterWritCraftingTypesMoveModeIgnore(PAC.BANKING_ADVANCED.MASTER_WRITS, PAC.BANKING_ADVANCED.UNKNOWN_WRITS) end,
     isHolidayWritsTransactionMenuDisabled = function() return isAdvancedHolidayWritCraftingTypesDisabledOrAllHolidayWritsMoveModeIgnore(PAC.BANKING_ADVANCED.HOLIDAY_WRITS) end,
 	isStylePageTransactionMenuDisabled = function() return isAdvancedStylePageCraftingTypesDisabledOrAllStylePageMoveModeIgnore(PAC.BANKING_ADVANCED.STYLE_PAGES) end,
 

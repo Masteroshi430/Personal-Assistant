@@ -33,8 +33,8 @@ PersonalAssistant.Constants = {
 			WORKER = table.concat({"|cFFD700", "P", "|r", "|cFFFFFF", "ersonal", "|r", "|cFFD700", "A", "|r", "|cFFFFFF", "ssistant ", "|r", "|cFFD700", "W", "|r", "|cFFFFFF", "orker", "|r"}),
         },
         AUTHOR = "Klingo, |c3CB371@Masteroshi430|r",
-        VERSION_ADDON = 20250419,
-        VERSION_DISPLAY = "2025.04.19",
+        VERSION_ADDON = 20250420,
+        VERSION_DISPLAY = "2025.04.20",
         WEBSITE = "https://www.esoui.com/downloads/info3512-PersonalAssistantBankingJunkLootRepairMasteroshi430sbranch.html",
         FEEDBACK = "https://www.esoui.com/downloads/info3512-PersonalAssistantBankingJunkLootRepairMasteroshi430sbranch.html#comments",
         KEYWORDS = {
@@ -508,6 +508,15 @@ PersonalAssistant.Constants = {
                  SPECIALIZED_ITEMTYPE_CRAFTED_ABILITY_SCRIPT_TERTIARY,
  			},
         },
+		UNKNOWN_WRITS = {
+		    217917, -- blacksmith
+            217918, -- clothier
+            217919, -- woodworking
+            217920, -- enchanting 
+            217921, -- provisioning 
+            217922, -- alchemy 
+            217923, -- jewelry 
+		},
         MASTER_WRITS = {
             CRAFTING_TYPE_BLACKSMITHING,                    -- 1
             CRAFTING_TYPE_CLOTHIER,                         -- 2

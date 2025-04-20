@@ -103,6 +103,15 @@ local PABankingMenuDefaults = {
                  Unknown = PAC.MOVE.IGNORE,
              },
         },
+		UnknownWrits = {
+		    [217917] = PAC.MOVE.IGNORE, -- blacksmith
+            [217918] = PAC.MOVE.IGNORE, -- clothier
+            [217919] = PAC.MOVE.IGNORE, -- woodworking
+            [217920] = PAC.MOVE.IGNORE, -- enchanting 
+            [217921] = PAC.MOVE.IGNORE, -- provisioning 
+            [217922] = PAC.MOVE.IGNORE, -- alchemy 
+            [217923] = PAC.MOVE.IGNORE, -- jewelry 
+		},
 
         MasterWritCraftingTypes = {
             [CRAFTING_TYPE_BLACKSMITHING] = PAC.MOVE.IGNORE,

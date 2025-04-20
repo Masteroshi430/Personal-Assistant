@@ -327,6 +327,11 @@ local function getCombinedItemTypeSpecializedComparator(combinedLists, excludeJu
                 if isValueInTable(PAC.BANKING_ADVANCED.SPECIALIZED.SURVEY_REPORTS[itemFilterType], itemId) then return true end
             end
         end
+        if specializedItemType == SPECIALIZED_ITEMTYPE_CONTAINER then -- hereherehere
+            for _, listItemId in pairs(combinedLists.unknownWrits) do
+                if itemId == listItemId then return true end
+            end
+        end
         local itemTraitType = GetItemTrait(itemData.bagId, itemData.slotIndex)
         for _, expectedItemTraitType in pairs(combinedLists.itemTraitTypes) do
             if expectedItemTraitType == itemTraitType then return true end
