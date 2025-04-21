@@ -20,7 +20,8 @@ PAR.SiegeWeapons[ALLIANCE_ALDMERI_DOMINION] =
 		[10] = { settingName = "FirepotTrebuchet", itemId = 27105, gold = 450, AP = 1800,},		
 		[11] = { settingName = "IceballTrebuchet", itemId = 44768, gold = false, AP = 1800,},			
 		[12] = { settingName = "StoneTrebuchet", itemId = 44769, gold = false, AP = 1800,},		
-		[13] = { settingName = "BatteringRam", itemId = 27136, gold = false, AP = 1800,},		
+		[13] = { settingName = "BatteringRam", itemId = 27136, gold = false, AP = 1800,},
+        [14] = { settingName = "TriPots", itemId = 217946, gold = false, AP = 900,},		
 	} 
 PAR.SiegeWeapons[ALLIANCE_DAGGERFALL_COVENANT] =
 	{
@@ -36,7 +37,8 @@ PAR.SiegeWeapons[ALLIANCE_DAGGERFALL_COVENANT] =
 		[10] = { settingName = "FirepotTrebuchet", itemId = 27115, gold = 450, AP = 1800,},		
 		[11] = { settingName = "IceballTrebuchet", itemId = 44771, gold = false, AP = 1800,},			
 		[12] = { settingName = "StoneTrebuchet", itemId = 44772, gold = false, AP = 1800,},		
-		[13] = { settingName = "BatteringRam", itemId = 27835, gold = false, AP = 1800,},		
+		[13] = { settingName = "BatteringRam", itemId = 27835, gold = false, AP = 1800,},
+        [14] = { settingName = "TriPots", itemId = 217946, gold = false, AP = 900,}, 		
 	} 
 PAR.SiegeWeapons[ALLIANCE_EBONHEART_PACT] =
 	{
@@ -52,11 +54,10 @@ PAR.SiegeWeapons[ALLIANCE_EBONHEART_PACT] =
 		[10] = { settingName = "FirepotTrebuchet", itemId = 27114, gold = 450, AP = 1800,},		
 		[11] = { settingName = "IceballTrebuchet", itemId = 44775, gold = false, AP = 1800,},			
 		[12] = { settingName = "StoneTrebuchet", itemId = 44776, gold = false, AP = 1800,},		
-		[13] = { settingName = "BatteringRam", itemId = 27850, gold = false, AP = 1800,},		
+		[13] = { settingName = "BatteringRam", itemId = 27850, gold = false, AP = 1800,},
+        [14] = { settingName = "TriPots", itemId = 217946, gold = false, AP = 900,},		
 	} 
-
-
-
+ 
 -- ---------------------------------------------------------------------------------------------------------------------
 
 local _repairItemList

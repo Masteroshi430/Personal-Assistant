@@ -124,7 +124,11 @@ local PARepairMenuDefaults = {
 
 		buyBatteringRam = false,
 		buyBatteringRamThreshold = 20,
-		buyBatteringRamPriority = "AP",		
+		buyBatteringRamPriority = "AP",
+
+		buyTriPots = false,
+		buyTriPotsThreshold = 20,
+		buyTriPotsPriority = "AP",		
 	},
 
 

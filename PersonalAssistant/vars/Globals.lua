@@ -33,8 +33,8 @@ PersonalAssistant.Constants = {
 			WORKER = table.concat({"|cFFD700", "P", "|r", "|cFFFFFF", "ersonal", "|r", "|cFFD700", "A", "|r", "|cFFFFFF", "ssistant ", "|r", "|cFFD700", "W", "|r", "|cFFFFFF", "orker", "|r"}),
         },
         AUTHOR = "Klingo, |c3CB371@Masteroshi430|r",
-        VERSION_ADDON = 20250420,
-        VERSION_DISPLAY = "2025.04.20",
+        VERSION_ADDON = 20250421,
+        VERSION_DISPLAY = "2025.04.21",
         WEBSITE = "https://www.esoui.com/downloads/info3512-PersonalAssistantBankingJunkLootRepairMasteroshi430sbranch.html",
         FEEDBACK = "https://www.esoui.com/downloads/info3512-PersonalAssistantBankingJunkLootRepairMasteroshi430sbranch.html#comments",
         KEYWORDS = {

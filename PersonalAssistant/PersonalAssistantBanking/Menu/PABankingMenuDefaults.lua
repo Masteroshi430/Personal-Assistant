@@ -297,7 +297,7 @@ local PABankingMenuDefaults = {
 			[204483] = { -- [Cyrodiil Repair Kit]
                 operator = PAC.OPERATOR.NONE,
                 bagAmount = 0,			
-			}, 
+			},
         },
     },
 
