@@ -83,7 +83,14 @@ local function TraitSelectedByUser(craftingSkillType, researchLineName, trait, b
 	end
 end
 
--- -- --------------------------------------------------------------------------------------------------------------------		   
+-- -- --------------------------------------------------------------------------------------------------------------------	
+
+local function IncludeBankedItems()
+	local isBankIncluded = GetSmithingObject().researchPanel.savedVars.includeBankedItemsChecked and not PA.MenuFunctions.PAWorker.getProtectBankSetting()
+	return isBankIncluded
+end
+
+-- --------------------------------------------------------------------------------------------------------------------	   
 		   
 local function StartResearchTrait(hasDeconstructedOrRefinedBefore)
     -- note: ITEM_TRAIT_TYPE_ARMOR_PROSPEROUS is apparently "invigorating" :-/
@@ -136,6 +143,100 @@ local function StartResearchTrait(hasDeconstructedOrRefinedBefore)
 			
 		end
 	end
+	
+	-- ESOplus members can research banked items
+	if IsESOPlusSubscriber() and IncludeBankedItems() then
+	
+	    bagId = BAG_BANK
+	    bagSlots = GetBagSize(bagId) 
+	
+		for slotIndex = 0, bagSlots do
+			local itemId = GetItemId(bagId, slotIndex)
+			local canBeResearched = GetItemTraitInformation(bagId, slotIndex) == ITEM_TRAIT_INFORMATION_CAN_BE_RESEARCHED 
+			local trait = GetItemTrait(bagId, slotIndex)
+			local EquipmentFilterType = GetItemEquipmentFilterType(bagId, slotIndex)
+			local craftingSkillType, researchLineName = GetRearchLineInfoFromRetraitItem(bagId, slotIndex)
+			
+			local _, _, _, _, locked, _, itemStyleId, itemQuality, displayQuality = GetItemInfo(bagId, slotIndex)
+			local itemLink = GetItemLink(bagId, slotIndex, LINK_STYLE_BRACKETS)
+			local isCrafted = IsItemLinkCrafted(itemLink)
+			local isReconstructed = IsItemReconstructed(bagId,slotIndex)
+
+			local isSetProtected = PAMF.PAWorker.getProtectUncollectedSetItemsSetting() and IsItemLinkSetCollectionPiece(itemLink)		
+
+			if TraitSelectedByUser(craftingSkillType, researchLineName, trait, bagId, slotIndex) and canBeResearched and (not IsTraitKnownForItem(itemId, trait)) and (not locked) and
+				displayQuality ~= ITEM_DISPLAY_QUALITY_MYTHIC_OVERRIDE and (not isCrafted) and (not isReconstructed) and (not isSetProtected) and 
+			   CanWeResearchThatResearchLine(craftingSkillType, researchLineName, trait) then
+
+				-- now we can open the research tab
+				if IsInGamepadPreferredMode() and SCENE_MANAGER:GetCurrentScene():GetName() ~= "gamepad_smithing_research" then
+					SCENE_MANAGER:Show("gamepad_smithing_research")
+				elseif ZO_MenuBar_GetSelectedDescriptor(SMITHING.modeBar) ~= SMITHING_MODE_RESEARCH then
+					ZO_MenuBar_SelectDescriptor(SMITHING.modeBar, SMITHING_MODE_RESEARCH, true, false) 
+				end 
+				
+				zo_callLater(function() 
+					 if CanWeResearchThatResearchLine(craftingSkillType, researchLineName, trait, true) then
+						 ResearchSmithingTrait(bagId, slotIndex)
+						 PlaySound("Smithing_Start_Research")
+					 end	 
+				end, count)
+
+				local itemLink = GetItemLink(bagId, slotIndex, LINK_STYLE_BRACKETS)
+				local traitLink = GetSmithingTraitItemLink(trait+1, LINK_STYLE_BRACKETS)
+				PAW.println(SI_PA_CHAT_ITEM_RESEARCHED, itemLink, traitLink, GetString("SI_ITEMTRAITTYPE",trait), researchLineName) 		
+				
+				count = count + 1000
+				
+			end
+		end
+		
+	    bagId = BAG_SUBSCRIBER_BANK
+	    bagSlots = GetBagSize(bagId) 
+	
+		for slotIndex = 0, bagSlots do
+			local itemId = GetItemId(bagId, slotIndex)
+			local canBeResearched = GetItemTraitInformation(bagId, slotIndex) == ITEM_TRAIT_INFORMATION_CAN_BE_RESEARCHED 
+			local trait = GetItemTrait(bagId, slotIndex)
+			local EquipmentFilterType = GetItemEquipmentFilterType(bagId, slotIndex)
+			local craftingSkillType, researchLineName = GetRearchLineInfoFromRetraitItem(bagId, slotIndex)
+			
+			local _, _, _, _, locked, _, itemStyleId, itemQuality, displayQuality = GetItemInfo(bagId, slotIndex)
+			local itemLink = GetItemLink(bagId, slotIndex, LINK_STYLE_BRACKETS)
+			local isCrafted = IsItemLinkCrafted(itemLink)
+			local isReconstructed = IsItemReconstructed(bagId,slotIndex)
+
+			local isSetProtected = PAMF.PAWorker.getProtectUncollectedSetItemsSetting() and IsItemLinkSetCollectionPiece(itemLink)		
+
+			if TraitSelectedByUser(craftingSkillType, researchLineName, trait, bagId, slotIndex) and canBeResearched and (not IsTraitKnownForItem(itemId, trait)) and (not locked) and
+				displayQuality ~= ITEM_DISPLAY_QUALITY_MYTHIC_OVERRIDE and (not isCrafted) and (not isReconstructed) and (not isSetProtected) and 
+			   CanWeResearchThatResearchLine(craftingSkillType, researchLineName, trait) then
+
+				-- now we can open the research tab
+				if IsInGamepadPreferredMode() and SCENE_MANAGER:GetCurrentScene():GetName() ~= "gamepad_smithing_research" then
+					SCENE_MANAGER:Show("gamepad_smithing_research")
+				elseif ZO_MenuBar_GetSelectedDescriptor(SMITHING.modeBar) ~= SMITHING_MODE_RESEARCH then
+					ZO_MenuBar_SelectDescriptor(SMITHING.modeBar, SMITHING_MODE_RESEARCH, true, false) 
+				end 
+				
+				zo_callLater(function() 
+					 if CanWeResearchThatResearchLine(craftingSkillType, researchLineName, trait, true) then
+						 ResearchSmithingTrait(bagId, slotIndex)
+						 PlaySound("Smithing_Start_Research")
+					 end	 
+				end, count)
+
+				local itemLink = GetItemLink(bagId, slotIndex, LINK_STYLE_BRACKETS)
+				local traitLink = GetSmithingTraitItemLink(trait+1, LINK_STYLE_BRACKETS)
+				PAW.println(SI_PA_CHAT_ITEM_RESEARCHED, itemLink, traitLink, GetString("SI_ITEMTRAITTYPE",trait), researchLineName) 		
+				
+				count = count + 1000
+				
+			end
+		end
+	
+	end
+	
 	
 	if PAMF.PAWorker.getAutoExitCraftingSetting() and (count ~= 1000 or hasDeconstructedOrRefinedBefore) then
 	       if count == 1000 then
