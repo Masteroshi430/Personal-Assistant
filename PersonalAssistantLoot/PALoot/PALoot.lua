@@ -219,13 +219,20 @@ local function sceneChange(oldState, newState)
 end
 
 -- ---------------------------------------------------------------------------------------------------------------------
+local function hideBook() -- do not display the motif book
+    SCENE_MANAGER:ShowBaseScene()
+	EVENT_MANAGER:UnregisterForEvent("hideBook", EVENT_SHOW_BOOK)
+end
+
+-- ---------------------------------------------------------------------------------------------------------------------
 
 local function learnNowOrLater(bagId, slotIndex)
     local hud = SCENE_MANAGER:GetScene("hud")
 	local inHud = hud:GetState() == SCENE_SHOWN
 	local inCombat = IsUnitInCombat("player")
     if bagId and slotIndex and inHud and not inCombat then
-        CallSecureProtected("UseItem", bagId, slotIndex)
+		EVENT_MANAGER:RegisterForEvent("hideBook", EVENT_SHOW_BOOK, hideBook)
+		CallSecureProtected("UseItem", bagId, slotIndex)
 		hud:UnregisterCallback("StateChange", sceneChange)
 		EVENT_MANAGER:UnregisterForEvent("combatStateChange", EVENT_PLAYER_COMBAT_STATE)
 
