@@ -86,7 +86,7 @@ end
 -- -- --------------------------------------------------------------------------------------------------------------------	
 
 local function IncludeBankedItems()
-	local isBankIncluded = GetSmithingObject().researchPanel.savedVars.includeBankedItemsChecked and not PA.MenuFunctions.PAWorker.getProtectBankSetting()
+	local isBankIncluded = SMITHING:GetResearchPanel():IsIncludeBankedItemsChecked() and not PA.MenuFunctions.PAWorker.getProtectBankSetting() 
 	return isBankIncluded
 end
 
