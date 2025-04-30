@@ -33,8 +33,8 @@ PersonalAssistant.Constants = {
 			WORKER = table.concat({"|cFFD700", "P", "|r", "|cFFFFFF", "ersonal", "|r", "|cFFD700", "A", "|r", "|cFFFFFF", "ssistant ", "|r", "|cFFD700", "W", "|r", "|cFFFFFF", "orker", "|r"}),
         },
         AUTHOR = "Klingo, |c3CB371@Masteroshi430|r",
-        VERSION_ADDON = 20250429,
-        VERSION_DISPLAY = "2025.04.29",
+        VERSION_ADDON = 20250430,
+        VERSION_DISPLAY = "2025.04.30",
         WEBSITE = "https://www.esoui.com/downloads/info3512-PersonalAssistantBankingJunkLootRepairMasteroshi430sbranch.html",
         FEEDBACK = "https://www.esoui.com/downloads/info3512-PersonalAssistantBankingJunkLootRepairMasteroshi430sbranch.html#comments",
         KEYWORDS = {
@@ -613,6 +613,7 @@ PersonalAssistant.Constants = {
 					188193, -- Blacksmith Survey: High Isle
 					198291, -- Blacksmith Survey: Telvanni Peninsula
 					207990, -- Blacksmith Survey: West Weald
+					217930, -- Blacksmith Survey: Solstice
                 },
                 [ITEMFILTERTYPE_ENCHANTING] = {
                     57733,  -- Enchanter Survey: Auridon
@@ -645,6 +646,7 @@ PersonalAssistant.Constants = {
 					188195, -- Enchanter Survey: High Isle
 					198289, -- Enchanter Survey: Apocrypha
 					207992, -- Enchanter Survey: West Weald
+					217932, -- Enchanter Survey: Solstice
                 },
                 [ITEMFILTERTYPE_CLOTHING] = {
                     57738,  -- Clothier Survey: Auridon
@@ -677,6 +679,7 @@ PersonalAssistant.Constants = {
 					188194, -- Clothier Survey: High Isle
 					198290, -- Clothier Survey: Apocrypha
 					207991, -- Clothier Survey: West Weald
+					217931, -- Clothier Survey: Solstice
                 },
                 [ITEMFILTERTYPE_ALCHEMY] = {
                     57744,  -- Alchemist Survey: Auridon
@@ -709,6 +712,7 @@ PersonalAssistant.Constants = {
 					188191, -- Alchemist Survey: High Isle
 					198288, -- Alchemist Survey: Apocrypha
 					207989, -- Alchemist Survey: West Weald
+					217929, -- Alchemist Survey: Solstice
                 },
                 [ITEMFILTERTYPE_WOODWORKING] = {
                     57741,  -- Woodworker Survey: Auridon
@@ -741,6 +745,7 @@ PersonalAssistant.Constants = {
 					188197, -- Woodworker Survey: High Isle
 					198297, -- Woodworker Survey: Telvanni Peninsula
 					166456, -- Woodworker Survey: West Weald
+					217934, -- Woodworker Survey: Solstice
                 },
                 [ITEMFILTERTYPE_JEWELRYCRAFTING] = {
                     139422, -- Jewelry Crafting Survey: Auridon
@@ -773,6 +778,7 @@ PersonalAssistant.Constants = {
 					188196, -- Jewelry Crafting Survey: High Isle
 					198294, -- Jewelry Crafting Survey: Telvanni Peninsula
 					207993, -- Jewelry Crafting Survey: West Weald
+					217933, -- Jewelry Crafting Survey: Solstice
                 },
             }
         },
