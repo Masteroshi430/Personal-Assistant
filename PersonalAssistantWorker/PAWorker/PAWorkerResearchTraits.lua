@@ -6,6 +6,18 @@ local PAMF = PA.MenuFunctions
 local PAHF = PA.HelperFunctions
 
 -- ---------------------------------------------------------------------------------------------------------------------
+
+local function ReenableLWCExitCraftStation()
+	if PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() then
+		if WritCreater then
+			function WritCreater.IsOkayToExitCraftStation() 
+				return true
+			end
+		end
+	end
+end
+
+-- ---------------------------------------------------------------------------------------------------------------------
 	
 local function CanWeResearchThatResearchLine(craftingSkillType, researchLineName, trait, silent)
 
@@ -240,10 +252,10 @@ local function StartResearchTrait(hasDeconstructedOrRefinedBefore)
 	
 	if PAMF.PAWorker.getAutoExitCraftingSetting() and (count ~= 1000 or hasDeconstructedOrRefinedBefore) then
 	       if count == 1000 then
-		       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() end, 1000) --- exit crafting table
+		       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() end, 1000) --- exit crafting table
 		   else
 		       if count > 3000 then count = 3000 end -- can't research more than 3 at once so...
-		       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() end, count+1000) --- exit crafting table
+		       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() end, count+1000) --- exit crafting table
 		   end
            
 	end

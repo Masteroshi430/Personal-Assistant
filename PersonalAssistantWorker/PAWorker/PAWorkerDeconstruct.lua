@@ -6,6 +6,17 @@ local PAHF = PA.HelperFunctions
 local PASavedVars = PA.SavedVars
 
 
+-- ---------------------------------------------------------------------------------------------------------------------
+
+local function ReenableLWCExitCraftStation()
+	if PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() then
+		if WritCreater then
+			function WritCreater.IsOkayToExitCraftStation() 
+				return true
+			end
+		end
+	end
+end
 
 -- ---------------------------------------------------------------------------------------------------------------------
 
@@ -277,10 +288,10 @@ local function StartDeconstructing(autoRefine, autoResearchTrait)
    elseif autoResearchTrait and PAW.currentCraftingStation ~= "Universal" and PAW.currentCraftingStation ~= "Enchanting" then -- if no autorefine we call autoResearchTrait
        PAW.StartResearchTrait(hasDoneSomething)
    elseif PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() and not autoRefine and not autoResearchTrait and hasDoneSomething then 
-       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() end, 1000) --- exit crafting table
+       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() end, 1000) --- exit crafting table
 	   PAW.hasCraftedSomething = false
    elseif PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() and PAW.currentCraftingStation == "Enchanting" and hasDoneSomething then
-       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() end, 1000) --- exit crafting table
+       zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() end, 1000) --- exit crafting table
 	   PAW.hasCraftedSomething = false
    end
 end	
@@ -390,6 +401,7 @@ local function StartCraftingInterraction(craftSkill, sameStation, craftMode, aut
  
 	
 	if PAW.currentCraftingStation == "None" then -- not the right station or not (anymore) at a station so we abort
+	    ReenableLWCExitCraftStation()
 	    return 
 	end
 	
@@ -414,7 +426,7 @@ local function StartCraftingInterraction(craftSkill, sameStation, craftMode, aut
 	    if autoResearchTrait then
 		   PAW.StartResearchTrait(PAW.hasCraftedSomething)
 		else
-		    zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() end, 1000)  -- exit crafting table
+		    zo_callLater(function() CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() end, 1000)  -- exit crafting table
 		end
     	return
 	end
@@ -494,7 +506,7 @@ local function StartCraftingInterraction(craftSkill, sameStation, craftMode, aut
 	   if PAW.currentCraftingStation ~= "Universal" and PAW.currentCraftingStation ~= "Enchanting" then -- ensure it is not universal deconstruction or enchanting before calling autorefine
 		   PAW.StartRefining(autoResearchTrait, PAW.hasCraftedSomething)
 	   elseif PAW.currentCraftingStation == "Enchanting" and PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() then
-	          zo_callLater(function() if PAW.hasCraftedSomething or PAW.hasDeconstructedSomething then CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() end end, 1000)  -- exit crafting table
+	          zo_callLater(function() if PAW.hasCraftedSomething or PAW.hasDeconstructedSomething then CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() end end, 1000)  -- exit crafting table
 	   end
 	   return 
 	end

@@ -6,6 +6,17 @@ local PAHF = PA.HelperFunctions
 
 -- ---------------------------------------------------------------------------------------------------------------------
 
+local function ReenableLWCExitCraftStation()
+	if PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() then
+		if WritCreater then
+			function WritCreater.IsOkayToExitCraftStation() 
+				return true
+			end
+		end
+	end
+end
+-- ---------------------------------------------------------------------------------------------------------------------
+
 local function CanRefineItem(bagId, slotIndex) 
     -- ZOS function CanItemBeRefined is not used here because we already have a list
 
@@ -215,7 +226,7 @@ local function StartRefining(autoResearchTrait, hasDeconstructedBefore)
 	     if autoResearchTrait then
 		    PAW.StartResearchTrait(hasDeconstructedBefore)
          elseif PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() and hasDeconstructedBefore then
-             CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() -- exit crafting table		 
+             CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() -- exit crafting table		 
 		 end
 	     return
 	  end	
@@ -234,7 +245,7 @@ local function StartRefining(autoResearchTrait, hasDeconstructedBefore)
 	  if autoResearchTrait then
 		 zo_callLater(function() PAW.StartResearchTrait(true) PAW.hasRefined = false end, whenToCallReasearchTrait)  
       elseif PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() then
-           zo_callLater(function() if hasDeconstructedBefore or PAW.hasRefined then CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") PAW.hasRefined = false SCENE_MANAGER:ShowBaseScene() end end, whenToCallReasearchTrait)  -- exit crafting table	
+           zo_callLater(function() if hasDeconstructedBefore or PAW.hasRefined then CALLBACK_MANAGER:FireCallbacks("PersonalAssistant_AutomaticCraftingStationClose") PAW.hasRefined = false SCENE_MANAGER:ShowBaseScene() ReenableLWCExitCraftStation() end end, whenToCallReasearchTrait)  -- exit crafting table	
 	  end
 	  
 end
