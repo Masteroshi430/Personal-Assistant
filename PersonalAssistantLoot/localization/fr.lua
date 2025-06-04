@@ -67,7 +67,7 @@ local PALStrings = {
     -- Mark Equipment (Apparel, Weapons & Jewelries) --
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_HEADER = "Marquer les équipements",
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_KNOWN = table.concat({">", PAC.ICONS.OTHERS.KNOWN.NORMAL, "un trait déjà recherché"}),
-    SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_UNKNOWN = table.concat({">", PAC.ICONS.OTHERS.UNKNOWN.NORMAL, "un trait pas encore recherché"}),
+    SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_UNKNOWN = table.concat({">", PAC.ICONS.OTHERS.NOT_RESEARCHED.NORMAL, "un trait pas encore recherché"}),
     --SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SET_UNCOLLECTED = "",
 
     -- Mark Companion Items --

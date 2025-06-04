@@ -137,11 +137,11 @@ local function _handleTooltips(itemIconControl, tooltipText)
     end
 end
 
--- sets the icon to the provided control and handels tooltip if provided
+-- sets the icon to the provided control and handles tooltip if provided
 local function _setItemIcon(itemIconControl, icon, iconSize, tooltipText, r, g, b, a)
     -- set the dimensions and the texture including provided rgba colors
     itemIconControl:SetDimensions(iconSize, iconSize)
-    itemIconControl:SetTextureCoords(0.2, 0.8, 0.2, 0.8)
+    itemIconControl:SetTextureCoords(0.1, 0.9, 0.1, 0.9)
     itemIconControl:SetTexture(icon)
     itemIconControl:SetColor(r, g, b, a)
     itemIconControl:SetHidden(false)
@@ -171,6 +171,14 @@ local function _setUnknownItemIcon(itemIconControl, iconSize, tooltipText)
     local green = 1.0   -- 255
     local blue = 0.4     -- 102
     _setItemIcon(itemIconControl, PAC.ICONS.OTHERS.UNKNOWN.PATH, iconSize, tooltipText, red, green, blue, 1)
+end
+
+-- sets the "can be researched" icon to the control, plus tooltip
+local function _setUnknownTraitIcon(itemIconControl, iconSize, tooltipText)
+    local red = 0.4     -- 102
+    local green = 1.0   -- 255
+    local blue = 0.4     -- 102
+    _setItemIcon(itemIconControl, PAC.ICONS.OTHERS.NOT_RESEARCHED.PATH, iconSize, tooltipText, red, green, blue, 1)
 end
 
 -- sets the "uncollected" icon to the control, plus tooltip
@@ -282,7 +290,7 @@ local function _addItemKnownOrUnknownVisuals(parentControl, itemLink, hookType)
         elseif ((itemFilterType == ITEMFILTERTYPE_ARMOR or itemFilterType == ITEMFILTERTYPE_WEAPONS or itemFilterType == ITEMFILTERTYPE_JEWELRY) and PALootItemIconsSV.ApparelWeapons.showUnknownIcon) then
             local itemTraitType = GetItemLinkTraitType(itemLink)
             local traitName = GetString("SI_ITEMTRAITTYPE", itemTraitType)
-            _setUnknownItemIcon(itemIconControl, iconSize, table.concat({GetString(SI_PA_ITEM_UNKNOWN), ": ", PAC.COLORS.WHITE, traitName}))
+            _setUnknownTraitIcon(itemIconControl, iconSize, table.concat({GetString(SI_PA_ITEM_UNKNOWN), ": ", PAC.COLORS.WHITE, traitName}))
         elseif ((specializedItemType == SPECIALIZED_ITEMTYPE_CONTAINER_STYLE_PAGE or specializedItemType == SPECIALIZED_ITEMTYPE_COLLECTIBLE_STYLE_PAGE or specializedItemType == SPECIALIZED_ITEMTYPE_CONTAINER) and PALootItemIconsSV.StylePageContainers.showUnknownIcon) then
             local containerCollectibleId = GetItemLinkContainerCollectibleId(itemLink)
             local collectibleName = zo_strformat(SI_TOOLTIP_ITEM_NAME, GetCollectibleName(containerCollectibleId))

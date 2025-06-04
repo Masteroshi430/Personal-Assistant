@@ -68,7 +68,7 @@ local PALStrings = {
     -- Mark Equipment (Apparel, Weapons & Jewelries) --
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_HEADER = "标记装备",
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_KNOWN = table.concat({">", PAC.ICONS.OTHERS.KNOWN.NORMAL, "当装备特质已研究"}),
-    SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_UNKNOWN = table.concat({">", PAC.ICONS.OTHERS.UNKNOWN.NORMAL, "当装备特质尚未研究"}),
+    SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_UNKNOWN = table.concat({">", PAC.ICONS.OTHERS.NOT_RESEARCHED.NORMAL, "当装备特质尚未研究"}),
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SET_UNCOLLECTED = table.concat({">", PAC.ICONS.OTHERS.UNKNOWN.NORMAL, "当套装装备尚未收集"}),
 
     -- Mark Companion Items --

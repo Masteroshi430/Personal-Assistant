@@ -403,9 +403,8 @@ local function StartCraftingInterraction(craftSkill, sameStation, craftMode, aut
 	if PAW.currentCraftingStation == "None" then -- not the right station or not (anymore) at a station so we abort
 	    ReenableLWCExitCraftStation()
 	    return 
-	end
-	
-	if PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() then
+		
+	elseif PA.MenuFunctions.PAWorker.getAutoExitCraftingSetting() then
 		if WritCreater then
 			function WritCreater.IsOkayToExitCraftStation() -- cancels LWC auto exit station
 				return false

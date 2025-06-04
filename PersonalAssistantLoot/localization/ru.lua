@@ -79,7 +79,7 @@ local PALStrings = {
     -- Mark Equipment (Apparel, Weapons & Jewelries) --
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_HEADER = "Пометка экипировки",
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_KNOWN = table.concat({">", PAC.ICONS.OTHERS.KNOWN.NORMAL, "если особенность уже изучена"}),
-    SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_UNKNOWN = table.concat({">", PAC.ICONS.OTHERS.UNKNOWN.NORMAL, "если особенность еще не изучена"}),
+    SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SHOW_UNKNOWN = table.concat({">", PAC.ICONS.OTHERS.NOT_RESEARCHED.NORMAL, "если особенность еще не изучена"}),
     SI_PA_MENU_LOOT_ICONS_APPARELWEAPONS_SET_UNCOLLECTED = table.concat({">", PAC.ICONS.OTHERS.UNKNOWN.NORMAL, "если предмет не добавлен в коллекции"}),
 
     -- Mark Companion Items --
